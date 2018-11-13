@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="/client/style.css">
+  </head>
+  <body>
+      <div id="calendar-vue">
+        <h1>{{ title }}</h1>
+        <div class="month" id="month">
+          <ul>
+            <li class="prev" v-on:click='prevMonth'>&#10094;</li>
+            <li class="next" v-on:click='nextMonth'>&#10095;</li>
+            <li>
+              {{ nameMonth }}<br>
+              <span style="font-size:18px">{{ year }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="weekdays" id="weekdays">
+          <li class="weekday" v-for="weekday in weekdays">{{ weekday }}</li>
+        </ul>
+
+        <ul class="days" id="days">
+          <li class="day" v-for="day in days">{{ day }}</li>
+        </ul>
+      </div>
+
+      <div id="calendar"></div>
+
+      <script src="/client/lib/moment.min.js"></script>
+      <script src="/client/lib/fr.js"></script>
+      <script src="/client/lib/vue.js"></script>
+      <script src="/client/client.js"></script>
+  </body>
+</html>

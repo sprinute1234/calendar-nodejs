@@ -1,0 +1,30 @@
+{
+  "name": "calendar-nodejs",
+  "version": "1.0.0",
+  "description": "calendar nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "sudo node_modules/.bin/nodemon index.js",
+    "browser-sync": "sudo node_modules/.bin/browser-sync start --watch --files public --proxy http://localhost:8000",
+    "start": "npm run nodemon & npm run browser-sync"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sprinute1234/calendar-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sprinute1234/calendar-nodejs/issues"
+  },
+  "homepage": "https://github.com/sprinute1234/calendar-nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
