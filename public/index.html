@@ -24,8 +24,34 @@
         </ul>
 
         <ul class="days" id="days">
-          <li class="day" v-for="day in days">{{ day }}</li>
+          <li class="day" v-for="first in firstDay"></li>
+          <li class="day" v-on:click="selectDay" v-for="day in days" v-if="day => 1">
+            <span class="active" v-if="selectedDay == day">{{ day }}</span>
+            <span v-else>{{ day }}</span>
+          </li>
         </ul>
+        <div v-if="selectedDay">
+          <div class="daySelected">
+            <p>{{ selectedDay }} {{ nameMonth }} {{ year }}</p>
+            <form v-on:submit="addEvent">
+              <input type="text" v-model="formEvent.text">
+              <button type="submit">ADD</button>
+              <pre>{{ formEvent.text }}</pre>
+            </form>
+          </div>
+          <div class="listEvents" v-if="!loading">
+            <p>Liste des events:<p>
+            <ul>
+              <li v-for="event in events">
+                {{ event.text }}
+                <button v-on:click="deleteEvent(event)">X</button>
+              </li>
+            </ul>
+          </div>
+          <div class="listEvents" v-if="loading">
+            <p>loading....</p>
+          </div>
+        </div>
       </div>
 
       <div id="calendar"></div>

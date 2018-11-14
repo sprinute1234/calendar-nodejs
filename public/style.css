@@ -44,6 +44,14 @@ body {font-family: Verdana, sans-serif;}
     text-align: center;
 }
 
+.daySelected {
+  text-align: center;
+  color: #666;
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
 .days {
     padding: 10px 0;
     background: #eee;
@@ -61,7 +69,17 @@ body {font-family: Verdana, sans-serif;}
     padding: 5px;
 }
 
+.listEvents {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+  text-align: center;
+  color: #777;
+  padding: 5px;
+}
+
 .days li .active {
+    padding: 5px;
     background: #1abc9c;
     color: white !important
 }
