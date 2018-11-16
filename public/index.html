@@ -42,7 +42,7 @@
           <div class="listEvents" v-if="!loading">
             <p>Liste des events:<p>
             <ul>
-              <li v-for="event in events">
+              <li v-for="event in events" v-if="event.date == dateSelected">
                 {{ event.text }}
                 <button v-on:click="deleteEvent(event)">X</button>
               </li>
@@ -53,7 +53,6 @@
           </div>
         </div>
       </div>
-
       <div id="calendar"></div>
 
       <script src="/client/lib/moment.min.js"></script>

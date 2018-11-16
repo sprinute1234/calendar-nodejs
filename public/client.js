@@ -6,10 +6,12 @@
       title: "Calendar",
       date : moment(),
       selectedDay: '',
+      selectedDate: '',
       loading: false,
       evenement : [],
       formEvent: {
         text:'',
+        date:'',
       },
     },
     created: function () {
@@ -56,6 +58,11 @@
       numDay: function () {
         return this.selectedDay
       },
+      dateSelected: function () {
+        var date = moment({year: this.date.get('year'), month: this.date.get('month'), days: this.selectedDay})
+
+        return date.format('DD-MM-YYYY')
+      },
       events: function () {
         return this.evenement
       }
@@ -81,19 +88,19 @@
       addEvent(e) {
         e.preventDefault()
         const index = this.evenement.length
-        var date = this.date
-
+        var date = moment({year: this.date.get('year'), month: this.date.get('month'), days: this.selectedDay})
+        this.formEvent.date = date.format('DD-MM-YYYY')
         const data = this.formEvent
         add(data)
-          .then( (evenement) => {
-            this.evenement = [...this.evenement, evenement]
+          .then( (newEvent) => {
+            this.evenement = [...this.evenement, newEvent]
           })
           .catch(err => alert('no'))
       },
       deleteEvent(events) {
+        const id = events.id
         deletEvents(events)
           .then( (evenement) => {
-            const id = evenement.id
             const index = this.evenement.findIndex(it => it.id === id)
             const newEvenement = Array.from(this.evenement)
             newEvenement.splice(index,1)
@@ -106,7 +113,7 @@
 
   function loadEvents() {
     return fetch('/api/calendar')
-      .then(response => response.json());
+      .then(response => response.json())
   }
 
   function add(data) {
@@ -116,7 +123,7 @@
         'Content-Type' : 'application/json',
       },
       body: JSON.stringify(data),
-    })
+    }).then(response => response.json())
   }
   function deletEvents(data) {
     return fetch('/api/calendar', {

@@ -1,6 +1,20 @@
 * {box-sizing: border-box;}
+html {
+  height: 100%;
+}
 ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0px;
+  background-color: #fcfcfc;
+  height: 100%;
+}
+h1 {
+  text-align: center;
+  color: #777;
+  margin: 0px;
+  padding: 30px;
+}
 
 .month {
     padding: 70px 25px;
@@ -58,7 +72,7 @@ body {font-family: Verdana, sans-serif;}
     margin: 0;
 }
 
-.days li {
+.days li{
     list-style-type: none;
     display: inline-block;
     width: 13.6%;
@@ -66,7 +80,12 @@ body {font-family: Verdana, sans-serif;}
     margin-bottom: 5px;
     font-size:12px;
     color: #777;
-    padding: 5px;
+    /*padding: 5px;*/
+}
+
+span {
+  padding: 5px;
+  display: block;
 }
 
 .listEvents {
@@ -86,7 +105,7 @@ body {font-family: Verdana, sans-serif;}
 
 .days li:hover {
     background: #1abc9c;
-    opacity: 0.8;
+    opacity: 0.7;
     color: white !important
 }
 
